@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/common.css">
+    <title>Location</title>
+
+    <style>
+
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <p>Enter the Location </p>
+        <br>
+        <input type="text" class="user_input" id="location" ></input>
+    </div>
+
+
+    <script>
+
+        document.getElementById('location').onchange = (e)=>{
+
+            let val = e.target.value
+
+            val = val.trim()
+            val = val.toLowerCase()
+
+            if( val === 'titan' ){
+
+                window.location.href = '/HTML/round6.html'
+
+            }
+            else alert('Wrong ans ! try again')
+
+        }
+
+    </script>
+
+</body>
+</html>

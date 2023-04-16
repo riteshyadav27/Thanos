@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over</title>
+    <link rel="stylesheet" href="../CSS/common.css">
+
+    <style>
+        .gameOverSec {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <section class="gameOverSec">
+
+        <h2> GAME OVER </h2>
+        <p> You Lost </p>
+
+        <br>
+        <br>
+        <br>
+        <div class="choiceBtnCon">
+            <button onclick="restart()"> Restart the Game </button>
+        </div>
+
+    </section>
+
+
+</body>
+<!-- <script src="../JS/round6.js" type="module"></script> -->
+<script>
+    function restart() {
+        window.location.href = "../HTML/round1.html";
+    }
+</script>
+
+<script type="module">
+
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+    //TODO: set correct import
+    import { getDatabase, set, ref, onValue, update, get, child } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAGGM_npD2mFT08G1FHs2ZCmh0JLQ-NLYU",
+        authDomain: "treasure-hunt-9a3a1.firebaseapp.com",
+        projectId: "treasure-hunt-9a3a1",
+        storageBucket: "treasure-hunt-9a3a1.appspot.com",
+        messagingSenderId: "965170673320",
+        appId: "1:965170673320:web:b12554bf2e5400045b349d",
+        measurementId: "G-VGXTVGWNC6"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getDatabase();
+    let attempt;
+
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, 'Users/' + localStorage.getItem("username"))).then((snapshot) => {
+
+        attempt = snapshot.val().attempt;
+        attempt = attempt + 1;
+
+        update(ref(db, 'Users/' + localStorage.getItem('username')), {
+            attempt: attempt,
+            round: 1,
+        })
+
+    }).catch((error) => {
+        console.error(error);
+    });
+
+
+
+</script>
+
+</html>

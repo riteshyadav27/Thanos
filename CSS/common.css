@@ -1,0 +1,150 @@
+body {
+    display: block;
+    width: 99%;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    display: block;
+    width: 100%;
+    height: fit-content;
+    margin: 0;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+.objective {
+    font-size: 18px;
+    font-weight: 700;
+    display: block;
+    width: 100%;
+    height: 5vh;
+    text-align: center;
+}
+
+.acquirePage {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 32px;
+    color: rgb(225 170 70);
+    height: 100%;
+
+}
+
+.user_input {
+
+    outline: none;
+    width: 20%;
+    padding: 10px 30px;
+    font-size: 18px;
+    line-height: 35px;
+    border-radius: 8px;
+    font-weight: 700;
+    border: 2px solid rgb(225 170 70);
+    color: rgb(225 170 70);
+    background: rgb(255, 255, 255);
+    text-align: center;
+
+}
+
+.controlBox {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 30vh;
+    padding: 10px 30px;
+    color: rgb(225 170 70);
+    border-radius: 8px;
+    background-color: #f0f0f0;
+
+}
+
+.character {
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 18px;
+    font-weight: 700;
+
+}
+
+.headCon {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: #ccc;
+}
+
+.dialougeCon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+.dialougeHead {
+    height: 80%;
+}
+
+#dialouge {
+    width: 90%;
+    padding: 10px 30px;
+    font-size: 18px;
+    line-height: 35px;
+    border-radius: 8px;
+    font-weight: 700;
+    border: 2px solid rgb(225 170 70);
+    background: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.choiceBtnCon {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    gap: 30px;
+
+}
+
+
+.choiceBtnCon > button {
+
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 30px 70px;
+    border: none;
+    outline: none;
+    background:rgb(225 170 70);
+    color: white;
+
+
+}
+
+.yellow{
+    color: rgb(225 170 70);
+}
+
+.purple{
+    color: rgb(184, 96, 184);
+}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Admin panel</title>
+</head>
+
+<body>
+    <div class="container1">
+        <div class="topbar">
+            <div class="logo">
+                <a href="../HTML/index.html" style="text-decoration: none;">
+                    <h2>Admin</h2>
+                </a>
+            </div>
+
+            <div class="user">
+                <a href="../HTML/index.html"><img src="../Images/left-arrow.png" alt=""></a>
+            </div>
+        </div>
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-th-large"></i>
+                        <div>Dashboard</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-user-graduate"></i>
+                        <div>Users</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-chart-bar"></i>
+                        <div>Analytics</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number" id="totaluser"></div>
+                        <div class="card-name">Users</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number" id="puzzlecomplete" >0</div>
+                        <div class="card-name">Puzzle Completed</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="charts">
+                <div class="chart">
+                    <h2>Dashboard</h2>
+                    <div class="container mt-3">
+                        <table class="table">
+                            <thead>
+                                <th>Sno</th>
+                                <th>Name</th>
+                                <th>Puzzle Complete</th>
+                                <th>Round</th>
+                                <th>Time (in sec)</th>
+                                <th>Attempt</th>
+                            </thead>
+                            <tbody id="tbody1"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="chart doughnut-chart">
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+    import { getDatabase, set, ref, child, onValue, get } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyAGGM_npD2mFT08G1FHs2ZCmh0JLQ-NLYU",
+        authDomain: "treasure-hunt-9a3a1.firebaseapp.com",
+        projectId: "treasure-hunt-9a3a1",
+        storageBucket: "treasure-hunt-9a3a1.appspot.com",
+        messagingSenderId: "965170673320",
+        appId: "1:965170673320:web:b12554bf2e5400045b349d",
+        measurementId: "G-VGXTVGWNC6"
+    };
+
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    // console.log(app);
+    const db = getDatabase();
+
+    var stdNo = 0;
+    var tbody = document.getElementById('tbody1');
+
+    function AddItemToTable(name, complete, round, time, attempt,time1,time2,time3,time4,time5,time6) {
+        let trow = document.createElement("tr");
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+        let td3 = document.createElement("td");
+        let td4 = document.createElement("td");
+        let td5 = document.createElement("td");
+        let td6 = document.createElement("td");
+
+        time = time1+time2+time3+time4+time5+time6;
+        
+        td1.innerHTML = ++stdNo;
+        td2.innerHTML = name;
+        td3.innerHTML = complete;
+        td4.innerHTML = round;
+        td5.innerHTML = time;
+        td6.innerHTML = attempt;
+
+
+        trow.appendChild(td1);
+        trow.appendChild(td2);
+        trow.appendChild(td3);
+        trow.appendChild(td4);
+        trow.appendChild(td5);
+        trow.appendChild(td6);
+
+        tbody.append(trow);
+
+
+    }
+
+    function AddAllItemToTable(TheUsers) {
+        stdNo = 0;
+        tbody.innerHTML = "";
+        TheUsers.forEach(element => {
+            AddItemToTable(element.name, element.complete, element.round, element.round, element.time, element.attempt,element.time1,element.time2,element.time3,element.time4,element.time5,element.time6);
+        });
+    }
+
+    let count = 0;
+    let compcount=0;
+
+     function GetAllDataOnce() {
+        const dbRef = ref(db);
+
+        get(child(dbRef, "Users"))
+            .then((snapshot) => {
+                var users = [];
+
+                snapshot.forEach(childSnapshot => {
+                    count++;
+                    users.push(childSnapshot.val());
+                    if(childSnapshot.val().complete===true){
+                        compcount++;
+                    }
+                });
+
+                document.getElementById("totaluser").innerHTML = count;
+                document.getElementById("puzzlecomplete").innerHTML = compcount;
+                AddAllItemToTable(users)
+                chart()
+            });
+    }
+
+    window.onload = ()=>{GetAllDataOnce()};
+    
+    function chart() {
+        console.log("hey");
+        var chart = new CanvasJS.Chart("chartContainer", {
+            
+
+            exportEnabled: false,
+            animationEnabled: true,
+            title: {
+                text: "Status"
+            },
+            legend: {
+                cursor: "pointer",
+                itemclick: explodePie
+            },
+            data: [{
+                
+
+                type: "pie",
+                showInLegend: true,
+                toolTipContent: "{name}: <strong>{y}%</strong>",
+                indexLabel: "{y}%",
+                dataPoints: [
+                    { y: compcount, name: "Users who complete Puzzle", exploded: true },
+                    { y: count-compcount, name: "Users who didn't complete puzzle" },
+                    
+                ]
+            }]
+        });
+        chart.render();
+    }
+
+    function explodePie(e) {
+        if (typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+            e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+        } else {
+            e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+        }
+        e.chart.render();
+
+    }
+
+</script>
+
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+</html>
