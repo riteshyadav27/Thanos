@@ -1,7 +1,7 @@
 # Thanos 
 </br>
 
-## Thanos Snap - The Puzzle
+## Thanos Snap - The Puzzle Game
 
 I have created multiple puzzles that test various abilities related to soft skills of a person such as perception, curiosity etc. 
 The website also stores the time each user takes and the number of attempts that a user has taken for completed each puzzle.<br /> This way, the website determines the soft skills of the user.
