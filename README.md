@@ -38,3 +38,23 @@ Round 1 : When someone chooses the 1st option . It will not show the Hint of the
 Round 5 : when someone click on the Blue gem on painting<br />
 Round 6 : when someone choose gamora instead of gauntlet<br />
 
+
+#### Screenshots :
+
+<img src="https://i.imgur.com/7GLfOZ0.jpg" width="550" height="300">
+
+<img src="https://i.imgur.com/d6U3jRG.jpg" width="550" height="300">
+
+<img src="https://i.imgur.com/syuKeiE.jpg" width="550" height="300">
+
+<img src="https://i.imgur.com/2enNowD.jpg" width="550" height="300">
+
+<img src="https://i.imgur.com/uQjqN5T.jpg" width="550" height="300">
+
+<img src="https://i.imgur.com/RSWwpFL.jpg" width="550" height="300">
+
+<img src="https://i.imgur.com/o0VFWrw.jpg" width="550" height="300">
+
+<img src="https://i.imgur.com/09fR3A7.jpg" width="550" height="300">
+
+<img src="https://i.imgur.com/o7r7KP6.jpg" width="550" height="300">
